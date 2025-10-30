@@ -1,8 +1,5 @@
 import java.util.Scanner;
 
-
-// TreeNode Class: Represents a node in the Binary Search Tree
-
 class ProductNode {
 
     int productId;
@@ -12,7 +9,6 @@ class ProductNode {
     int productStock;
 
     ProductNode left, right;
-
 
     public ProductNode(int productId, String productName, int productStock) {
 
@@ -28,22 +24,15 @@ class ProductNode {
 
 }
 
-
-// Binary Search Tree Class
-
 class ProductBST {
 
     ProductNode root;
-
 
     public ProductBST() {
 
         root = null;
 
     }
-
-
-    // Insert a product into the BST (arranged by productId)
 
     public void insert(int id, String name, int stock) {
 
@@ -54,7 +43,6 @@ class ProductBST {
         displayTree();
 
     }
-
 
     private ProductNode insertNode(ProductNode root, int id, String name, int stock) {
 
@@ -74,8 +62,6 @@ class ProductBST {
 
         } else {
 
-            // If product already exists, update stock
-
             root.productStock += stock;
 
             System.out.println("Product already exists. Stock updated.");
@@ -86,9 +72,6 @@ class ProductBST {
 
     }
 
-
-    // Search for a product
-
     public void search(int id) {
 
         ProductNode parent = null;
@@ -96,7 +79,6 @@ class ProductBST {
         ProductNode current = root;
 
         boolean found = false;
-
 
         while (current != null) {
 
@@ -122,32 +104,31 @@ class ProductBST {
 
         }
 
-
         if (found) {
 
             if (parent == null) {
 
                 System.out.println("Product found at ROOT: " +
 
-                    current.productId + " - " + current.productName +
+                        current.productId + " - " + current.productName +
 
-                    " (Stock: " + current.productStock + ")");
+                        " (Stock: " + current.productStock + ")");
 
             } else if (parent.left == current) {
 
                 System.out.println("Product found at LEFT of " + parent.productId +
 
-                    ": " + current.productId + " - " + current.productName +
+                        ": " + current.productId + " - " + current.productName +
 
-                    " (Stock: " + current.productStock + ")");
+                        " (Stock: " + current.productStock + ")");
 
             } else {
 
                 System.out.println("Product found at RIGHT of " + parent.productId +
 
-                    ": " + current.productId + " - " + current.productName +
+                        ": " + current.productId + " - " + current.productName +
 
-                    " (Stock: " + current.productStock + ")");
+                        " (Stock: " + current.productStock + ")");
 
             }
 
@@ -157,13 +138,9 @@ class ProductBST {
 
         }
 
-
         displayTree();
 
     }
-
-
-    // Delete a product
 
     public void delete(int id) {
 
@@ -174,7 +151,6 @@ class ProductBST {
         displayTree();
 
     }
-
 
     private ProductNode deleteNode(ProductNode root, int id) {
 
@@ -194,8 +170,6 @@ class ProductBST {
 
         } else {
 
-            // Found node to delete
-
             if (root.left == null && root.right == null) {
 
                 return null;
@@ -209,8 +183,6 @@ class ProductBST {
                 return root.left;
 
             }
-
-            // Replace with inorder successor
 
             ProductNode successor = minValueNode(root.right);
 
@@ -228,7 +200,6 @@ class ProductBST {
 
     }
 
-
     private ProductNode minValueNode(ProductNode node) {
 
         while (node.left != null) {
@@ -240,9 +211,6 @@ class ProductBST {
         return node;
 
     }
-
-
-    // Display the BST in-order
 
     public void displayTree() {
 
@@ -262,7 +230,6 @@ class ProductBST {
 
     }
 
-
     private void inOrderTraversal(ProductNode root) {
 
         if (root != null) {
@@ -271,7 +238,7 @@ class ProductBST {
 
             System.out.printf("%-10d %-15s %-10d%n",
 
-                root.productId, root.productName, root.productStock);
+                    root.productId, root.productName, root.productStock);
 
             inOrderTraversal(root.right);
 
@@ -281,9 +248,6 @@ class ProductBST {
 
 }
 
-
-// Main class
-
 public class Inventory_BinarySearchTree {
 
     public static void main(String[] args) {
@@ -291,7 +255,6 @@ public class Inventory_BinarySearchTree {
         Scanner scanner = new Scanner(System.in);
 
         ProductBST bst = new ProductBST();
-
 
         while (true) {
 
@@ -311,7 +274,6 @@ public class Inventory_BinarySearchTree {
 
             int choice = scanner.nextInt();
 
-
             switch (choice) {
 
                 case 1:
@@ -320,7 +282,7 @@ public class Inventory_BinarySearchTree {
 
                     int id = scanner.nextInt();
 
-                    scanner.nextLine(); // consume newline
+                    scanner.nextLine();
 
                     System.out.print("Enter Product Name: ");
 

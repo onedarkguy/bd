@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 class Passenger {
 
     String trainName;
@@ -13,10 +12,9 @@ class Passenger {
 
     boolean passengerStatus;
 
-
     public Passenger(String trainName, int trainNumber, String passengerName, int passengerAge, boolean status,
 
-        int berthNo, String coach) {
+            int berthNo, String coach) {
 
         this.trainName = trainName;
         this.trainNumber = trainNumber;
@@ -31,28 +29,23 @@ class Passenger {
 
     }
 
-
     public void printDetails() {
 
         System.out.println("Name: " + passengerName + ", Age: " + passengerAge +
 
-            ", Coach: " + passengerCoach + ", Berth: " + passengerBerth +
+                ", Coach: " + passengerCoach + ", Berth: " + passengerBerth +
 
-            ", Status: " + (passengerStatus ? "Confirmed" : "Waiting"));
+                ", Status: " + (passengerStatus ? "Confirmed" : "Waiting"));
 
     }
 
 }
-
-
-// Circular Queue implementation for waiting list
 
 class WaitingQueue {
 
     private Passenger[] queue;
 
     private int front, rear, size, capacity;
-
 
     public WaitingQueue(int capacity) {
 
@@ -68,20 +61,17 @@ class WaitingQueue {
 
     }
 
-
     public boolean isFull() {
 
         return size == capacity;
 
     }
 
-
     public boolean isEmpty() {
 
         return size == 0;
 
     }
-
 
     public void enqueue(Passenger p) {
 
@@ -101,10 +91,10 @@ class WaitingQueue {
 
     }
 
-
     public Passenger dequeue() {
 
-        if (isEmpty()) return null;
+        if (isEmpty())
+            return null;
 
         Passenger removed = queue[front];
 
@@ -116,17 +106,16 @@ class WaitingQueue {
 
     }
 
-
     public Passenger peek() {
 
         return isEmpty() ? null : queue[front];
 
     }
 
-
     public void display() {
 
-        if (isEmpty()) return;
+        if (isEmpty())
+            return;
 
         for (int i = 0; i < size; i++) {
 
@@ -138,18 +127,16 @@ class WaitingQueue {
 
     }
 
-
     public boolean removeByName(String name) {
 
-        if (isEmpty()) return false;
+        if (isEmpty())
+            return false;
 
         int idx = front;
 
         for (int i = 0; i < size; i++) {
 
             if (queue[idx].passengerName.equalsIgnoreCase(name)) {
-
-                // Shift elements circularly
 
                 for (int j = i; j < size - 1; j++) {
 
@@ -179,20 +166,17 @@ class WaitingQueue {
 
 }
 
-
 public class CircularQueue {
 
     static final int MAX_CONFIRMED = 5;
 
     static final int MAX_WAITING = 3;
 
-
-    static List < Passenger > confirmedList = new ArrayList < > ();
+    static List<Passenger> confirmedList = new ArrayList<>();
 
     static WaitingQueue waitingList = new WaitingQueue(MAX_WAITING);
 
     static int berthCounter = 1;
-
 
     public static void bookTicket(String trainName, int trainNumber, String name, int age) {
 
@@ -220,11 +204,9 @@ public class CircularQueue {
 
     }
 
-
     public static void cancelTicket(String name) {
 
         boolean found = false;
-
 
         for (int i = 0; i < confirmedList.size(); i++) {
 
@@ -235,7 +217,6 @@ public class CircularQueue {
                 found = true;
 
                 System.out.println("Cancelled confirmed ticket of " + name);
-
 
                 Passenger moved = waitingList.dequeue();
 
@@ -259,7 +240,6 @@ public class CircularQueue {
 
         }
 
-
         if (!found) {
 
             if (waitingList.removeByName(name)) {
@@ -272,7 +252,6 @@ public class CircularQueue {
 
         }
 
-
         if (!found) {
 
             System.out.println("No ticket found under the name: " + name);
@@ -281,15 +260,13 @@ public class CircularQueue {
 
     }
 
-
     public static void displayPassengers() {
 
         System.out.println("\n--- Confirmed List ---");
 
-        for (Passenger p: confirmedList)
+        for (Passenger p : confirmedList)
 
             p.printDetails();
-
 
         System.out.println("\n--- Waiting List ---");
 
@@ -297,13 +274,11 @@ public class CircularQueue {
 
     }
 
-
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
         int choice;
-
 
         do {
 
@@ -312,7 +287,6 @@ public class CircularQueue {
             choice = sc.nextInt();
 
             sc.nextLine();
-
 
             switch (choice) {
 
@@ -342,7 +316,6 @@ public class CircularQueue {
 
                     break;
 
-
                 case 2:
 
                     System.out.print("Enter Passenger Name to Cancel: ");
@@ -353,20 +326,17 @@ public class CircularQueue {
 
                     break;
 
-
                 case 3:
 
                     displayPassengers();
 
                     break;
 
-
                 case 4:
 
                     System.out.println("Exiting...");
 
                     break;
-
 
                 default:
 
@@ -375,7 +345,6 @@ public class CircularQueue {
             }
 
         } while (choice != 4);
-
 
         sc.close();
 

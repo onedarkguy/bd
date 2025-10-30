@@ -8,7 +8,6 @@ class PCB {
 
     PCB next;
 
-
     PCB(String name, int id, int prio) {
 
         processName = name;
@@ -23,13 +22,9 @@ class PCB {
 
 }
 
-
 class PCBList {
 
     PCB head;
-
-
-    // Insert at end
 
     void insert(String name, int id, int prio) {
 
@@ -52,9 +47,6 @@ class PCBList {
         temp.next = newNode;
 
     }
-
-
-    // Delete by ID
 
     boolean delete(int id) {
 
@@ -92,9 +84,6 @@ class PCBList {
 
     }
 
-
-    // Search by ID
-
     PCB search(int id) {
 
         PCB temp = head;
@@ -113,9 +102,6 @@ class PCBList {
 
     }
 
-
-    // Display all
-
     void display() {
 
         PCB temp = head;
@@ -132,9 +118,9 @@ class PCBList {
 
             System.out.print("[Name:" + temp.processName +
 
-                ", ID:" + temp.processId +
+                    ", ID:" + temp.processId +
 
-                ", Priority:" + temp.priority + "] -> ");
+                    ", Priority:" + temp.priority + "] -> ");
 
             temp = temp.next;
 
@@ -143,9 +129,6 @@ class PCBList {
         System.out.println("NULL");
 
     }
-
-
-    // Swap two nodes by IDs
 
     boolean swap(int id1, int id2) {
 
@@ -156,7 +139,6 @@ class PCBList {
         PCB prevX = null, currX = head;
 
         PCB prevY = null, currY = head;
-
 
         while (currX != null && currX.processId != id1) {
 
@@ -174,11 +156,9 @@ class PCBList {
 
         }
 
-
         if (currX == null || currY == null)
 
             return false;
-
 
         if (prevX != null)
 
@@ -196,13 +176,11 @@ class PCBList {
 
             head = currX;
 
-
         PCB temp = currX.next;
 
         currX.next = currY.next;
 
         currY.next = temp;
-
 
         return true;
 
@@ -210,13 +188,11 @@ class PCBList {
 
 }
 
-
 public class ProcessControlBlock_LinkedList {
 
     public static void main(String[] args) {
 
         PCBList list = new PCBList();
-
 
         list.insert("P1", 101, 1);
 
@@ -224,18 +200,15 @@ public class ProcessControlBlock_LinkedList {
 
         list.insert("P3", 103, 3);
 
-
         System.out.println("Initial Process List:");
 
         list.display();
-
 
         System.out.println("\nDeleting process 102...");
 
         list.delete(102);
 
         list.display();
-
 
         System.out.println("\nSearching process 103...");
 
@@ -248,7 +221,6 @@ public class ProcessControlBlock_LinkedList {
         else
 
             System.out.println("Not found");
-
 
         System.out.println("\nSwapping process 101 and 103...");
 

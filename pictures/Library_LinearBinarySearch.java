@@ -2,9 +2,7 @@
 
 // Course: Data Structures and Algorithms - Exp 9
 
-
 import java.util.*;
-
 
 class Book {
 
@@ -15,9 +13,6 @@ class Book {
     double price;
 
     int copies;
-
-
-    // Constructor
 
     Book(String name, String author, double price, int copies) {
 
@@ -31,9 +26,6 @@ class Book {
 
     }
 
-
-    // Display function
-
     void display() {
 
         System.out.println("Name: " + name + ", Author: " + author + ", Price: " + price + ", Copies: " + copies);
@@ -42,17 +34,13 @@ class Book {
 
 }
 
-
 public class Library_LinearBinarySearch {
 
     static Scanner sc = new Scanner(System.in);
 
     static Book[] books = new Book[5];
 
-    static int count = 0; // to track number of books inserted
-
-
-    // Function to insert books
+    static int count = 0;
 
     static void insertBooks() {
 
@@ -63,7 +51,6 @@ public class Library_LinearBinarySearch {
             return;
 
         }
-
 
         System.out.println("\nEnter details for Book " + (count + 1));
 
@@ -83,20 +70,15 @@ public class Library_LinearBinarySearch {
 
         int copies = sc.nextInt();
 
-        sc.nextLine(); // consume newline
-
+        sc.nextLine();
 
         books[count] = new Book(name, author, price, copies);
 
         count++;
 
-
         System.out.println("Book added successfully!");
 
     }
-
-
-    // Display all books
 
     static void displayBooks() {
 
@@ -108,7 +90,6 @@ public class Library_LinearBinarySearch {
 
         }
 
-
         System.out.println("\nLibrary Book Details:");
 
         for (int i = 0; i < count; i++) {
@@ -118,9 +99,6 @@ public class Library_LinearBinarySearch {
         }
 
     }
-
-
-    // Linear Search
 
     static void linearSearch(String searchName) {
 
@@ -150,9 +128,6 @@ public class Library_LinearBinarySearch {
 
     }
 
-
-    // Binary Search (requires sorted array)
-
     static void binarySearch(String searchName) {
 
         if (count == 0) {
@@ -163,25 +138,19 @@ public class Library_LinearBinarySearch {
 
         }
 
-
-        // Copy only inserted books into temp array for sorting
-
         Book[] sortedBooks = Arrays.copyOf(books, count);
 
         Arrays.sort(sortedBooks, Comparator.comparing(b -> b.name.toLowerCase()));
 
-
         int left = 0, right = count - 1;
 
         boolean found = false;
-
 
         while (left <= right) {
 
             int mid = (left + right) / 2;
 
             int cmp = searchName.compareToIgnoreCase(sortedBooks[mid].name);
-
 
             if (cmp == 0) {
 
@@ -205,7 +174,6 @@ public class Library_LinearBinarySearch {
 
         }
 
-
         if (!found) {
 
             System.out.println("\nBook not found (Binary Search).");
@@ -214,13 +182,9 @@ public class Library_LinearBinarySearch {
 
     }
 
-
-    // Menu-driven main
-
     public static void main(String[] args) {
 
         int choice;
-
 
         do {
 
@@ -240,7 +204,6 @@ public class Library_LinearBinarySearch {
 
             sc.nextLine(); // consume newline
 
-
             switch (choice) {
 
                 case 1:
@@ -249,13 +212,11 @@ public class Library_LinearBinarySearch {
 
                     break;
 
-
                 case 2:
 
                     displayBooks();
 
                     break;
-
 
                 case 3:
 
@@ -271,7 +232,6 @@ public class Library_LinearBinarySearch {
 
                     String searchName = sc.nextLine();
 
-
                     System.out.println("Choose search method:");
 
                     System.out.println("1. Linear Search");
@@ -282,8 +242,7 @@ public class Library_LinearBinarySearch {
 
                     int searchChoice = sc.nextInt();
 
-                    sc.nextLine(); // consume newline
-
+                    sc.nextLine();
 
                     if (searchChoice == 1)
 
@@ -299,13 +258,11 @@ public class Library_LinearBinarySearch {
 
                     break;
 
-
                 case 4:
 
                     System.out.println("\nExiting... Thank you!");
 
                     break;
-
 
                 default:
 

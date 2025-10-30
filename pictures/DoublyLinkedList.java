@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 class Node {
 
     int data;
@@ -8,7 +7,6 @@ class Node {
     Node prev;
 
     Node next;
-
 
     Node(int data) {
 
@@ -22,20 +20,15 @@ class Node {
 
 }
 
-
 public class DoublyLinkedList {
 
     private Node start;
-
 
     public DoublyLinkedList() {
 
         start = null;
 
     }
-
-
-    // Insert at beginning
 
     public void insertAtBeginning(int val) {
 
@@ -56,9 +49,6 @@ public class DoublyLinkedList {
         }
 
     }
-
-
-    // Insert at end
 
     public void insertAtEnd(int val) {
 
@@ -85,9 +75,6 @@ public class DoublyLinkedList {
         newNode.prev = ptr;
 
     }
-
-
-    // Insert after a given value
 
     public void insertAfter(int num, int val) {
 
@@ -131,9 +118,6 @@ public class DoublyLinkedList {
 
     }
 
-
-    // Delete first node
-
     public void deleteFirst() {
 
         if (start == null) {
@@ -155,9 +139,6 @@ public class DoublyLinkedList {
         System.out.println("Deleted: " + ptr.data);
 
     }
-
-
-    // Delete last node
 
     public void deleteLast() {
 
@@ -190,9 +171,6 @@ public class DoublyLinkedList {
         System.out.println("Deleted: " + ptr.data);
 
     }
-
-
-    // Delete after a given value
 
     public void deleteAfter(int num) {
 
@@ -234,9 +212,6 @@ public class DoublyLinkedList {
 
     }
 
-
-    // Display the list
-
     public void display() {
 
         if (start == null) {
@@ -263,7 +238,6 @@ public class DoublyLinkedList {
 
     }
 
-
     public static void main(String[] args) {
 
         DoublyLinkedList dll = new DoublyLinkedList();
@@ -271,7 +245,6 @@ public class DoublyLinkedList {
         Scanner sc = new Scanner(System.in);
 
         int choice, val = 0, num;
-
 
         do {
 
@@ -297,13 +270,11 @@ public class DoublyLinkedList {
 
             choice = sc.nextInt();
 
-
             switch (choice) {
 
                 case 1:
 
                     System.out.print("Enter value: ");
-
 
                     dll.insertAtBeginning(val);
 
